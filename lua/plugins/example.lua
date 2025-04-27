@@ -29,7 +29,6 @@ return {
 
   -- disable trouble
   { "folke/trouble.nvim", enabled = false },
-
   -- override nvim-cmp and add cmp-emoji
   {
     "hrsh7th/nvim-cmp",
@@ -56,7 +55,7 @@ return {
     opts = {
       defaults = {
         layout_strategy = "horizontal",
-        layout_config = { prompt_position = "top" },
+        layout_config = { prompt_position = "bottom" },
         sorting_strategy = "ascending",
         winblend = 0,
       },
@@ -134,6 +133,8 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "scss",
+        "gitignore",
       },
     },
   },
@@ -157,7 +158,11 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function(_, opts)
-      table.insert(opts.sections.lualine_x, "😄")
+      table.insert(opts.sections.lualine_x, {
+        function()
+          return "😄"
+        end,
+      })
     end,
   },
 
@@ -187,6 +192,9 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "tailwindcss-language-server",
+        "typescript-language-server",
+        "css-lsp",
       },
     },
   },
